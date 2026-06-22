@@ -1,0 +1,213 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnbggdtjkyuwo"]
+
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="1_xixe3"]
+[ext_resource type="Script" uid="uid://b6qqcpnn7owrd" path="res://scripts/slot_machine_final.gd" id="1_yohb1"]
+[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="3_7scc5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qn0ap"]
+font = ExtResource("1_xixe3")
+font_size = 24
+
+[node name="SlotMachine" type="Node2D"]
+script = ExtResource("1_yohb1")
+
+[node name="SlotMachineWindow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="SlotMachineContainer" type="VBoxContainer" parent="SlotMachineWindow"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.85
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SlotMachineWindow/SlotMachineContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="SlotMachineWindow/SlotMachineContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="SlotMachineWindow/SlotMachineContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.37414718, 0.4042752, 0.40229133, 1)
+
+[node name="ScoreLabel" type="Label" parent="SlotMachineWindow/SlotMachineContainer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -195.5
+offset_top = -12.0
+offset_right = 195.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_qn0ap")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotsContainer" type="Control" parent="SlotMachineWindow/SlotMachineContainer"]
+custom_minimum_size = Vector2(0, 150.41)
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="ColorRect" type="ColorRect" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="SlotsMargin" type="MarginContainer" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ColorRect" type="ColorRect" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin"]
+layout_mode = 2
+color = Color(0.37254903, 0.40392157, 0.40392157, 1)
+
+[node name="Slots" type="HBoxContainer" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin"]
+layout_mode = 2
+
+[node name="Reel1" type="VBoxContainer" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SymbolLabel1" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel2" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel3" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel1"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reel2" type="VBoxContainer" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.18
+
+[node name="SymbolLabel1" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel2" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel3" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reel3" type="VBoxContainer" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SymbolLabel1" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel2" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 32
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SymbolLabel3" type="Label" parent="SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_7scc5")
+theme_override_font_sizes/font_size = 16
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpinButton" type="Button" parent="SlotMachineWindow/SlotMachineContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_xixe3")
+theme_override_font_sizes/font_size = 28
+text = "SPIN"
+
+[node name="Timer" type="Timer" parent="SlotMachineWindow"]
+wait_time = 3.0
+
+[connection signal="pressed" from="SlotMachineWindow/SlotMachineContainer/SpinButton" to="." method="_on_spin_button_pressed"]
+[connection signal="timeout" from="SlotMachineWindow/Timer" to="." method="_on_timer_timeout"]
