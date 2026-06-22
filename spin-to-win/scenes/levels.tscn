@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://pbhmj6us01pm"]
+
+[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="1_hcnff"]
+
+[node name="Levels" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(574, 323.5)
+scale = Vector2(0.6010417, 0.59537035)
+texture = ExtResource("1_hcnff")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+columns = 3
+
+[node name="Button" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+
+[node name="Button3" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+
+[node name="Button4" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "4"
+
+[node name="Button5" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "5"
+
+[node name="Button6" type="Button" parent="UI/GridContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "6"
