@@ -11,18 +11,20 @@ config_version=5
 [application]
 
 config/name="SpinToWin"
-run/main_scene="uid://do7l3vsqxf4lj"
+run/main_scene="uid://cs0k1wreqgms2"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameMaker="*res://scripts/game_maker.gd"
+LevelCore="*res://scripts/LevelCore.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/stretch/aspect="expand"
 
 [input]
 
