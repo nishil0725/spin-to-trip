@@ -1,17 +1,151 @@
-[gd_scene load_steps=2 format=3 uid="uid://pbhmj6us01pm"]
+[gd_scene load_steps=8 format=3 uid="uid://pbhmj6us01pm"]
 
-[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="1_hcnff"]
+[ext_resource type="Script" uid="uid://xwo0mbaxrxeq" path="res://scripts/levels.gd" id="1_5ekxl"]
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="2_hk6qi"]
+[ext_resource type="Texture2D" uid="uid://bs4xv1kcyxfyv" path="res://sprites/sky.png" id="2_ly2og"]
+[ext_resource type="Texture2D" uid="uid://bwupgpjcwf3ag" path="res://sprites/Your_paragraph_text_3_-removebg-preview.png" id="3_jj4e6"]
+[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="4_jj4e6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ekxl"]
+font = ExtResource("2_hk6qi")
+font_size = 64
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_jj4e6"]
+font = ExtResource("4_jj4e6")
+font_size = 48
+font_color = Color(1, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Levels" type="Node2D"]
+script = ExtResource("1_5ekxl")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(574, 323.5)
-scale = Vector2(0.6010417, 0.59537035)
-texture = ExtResource("1_hcnff")
+position = Vector2(959.00006, 542.5)
+scale = Vector2(1.0020834, 1.0009259)
+texture = ExtResource("2_ly2og")
+
+[node name="Background2" type="Sprite2D" parent="."]
+position = Vector2(961, 909.49994)
+scale = Vector2(2.885886, 3.0213337)
+texture = ExtResource("3_jj4e6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="GridContainer" type="GridContainer" parent="UI"]
+[node name="FinishedContainer" type="GridContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/FinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/FinishedContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 1, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/FinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/FinishedContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 1, 0, 1)
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI/FinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/FinishedContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 1, 0, 1)
+
+[node name="UnfinishedContainer" type="GridContainer" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/UnfinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/UnfinishedContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI/UnfinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/UnfinishedContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="MarginContainer3" type="MarginContainer" parent="UI/UnfinishedContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="UI/UnfinishedContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 0, 1)
+
+[node name="ButtonContainer" type="GridContainer" parent="UI"]
 anchors_preset = -1
 anchor_left = 0.25
 anchor_top = 0.25
@@ -19,44 +153,57 @@ anchor_right = 0.75
 anchor_bottom = 0.75
 columns = 3
 
-[node name="Button" type="Button" parent="UI/GridContainer"]
+[node name="Button" type="Button" parent="UI/ButtonContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_jj4e6")
+theme_override_font_sizes/font_size = 64
 text = "1"
 
-[node name="Button2" type="Button" parent="UI/GridContainer"]
+[node name="Button2" type="Button" parent="UI/ButtonContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("4_jj4e6")
+theme_override_font_sizes/font_size = 64
 text = "2"
 
-[node name="Button3" type="Button" parent="UI/GridContainer"]
+[node name="Button3" type="Button" parent="UI/ButtonContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "3"
+theme_override_fonts/font = ExtResource("4_jj4e6")
+theme_override_font_sizes/font_size = 64
+text = "3
+"
 
-[node name="Button4" type="Button" parent="UI/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "4"
+[node name="Label" type="Label" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.33
+anchor_top = 0.15
+anchor_right = 0.67
+anchor_bottom = 0.25
+text = "Level Select"
+label_settings = SubResource("LabelSettings_5ekxl")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button5" type="Button" parent="UI/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "5"
+[node name="Label2" type="Label" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.77
+anchor_right = 0.75
+anchor_bottom = 0.77
+text = "finish previous levels first"
+label_settings = SubResource("LabelSettings_jj4e6")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button6" type="Button" parent="UI/GridContainer"]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "6"
+[connection signal="pressed" from="UI/ButtonContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/Button3" to="." method="_on_button_3_pressed"]

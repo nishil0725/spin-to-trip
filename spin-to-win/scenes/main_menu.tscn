@@ -19,6 +19,7 @@ text = "START
 "
 
 [node name="ExitButton" type="Button" parent="UI"]
+unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.6
 anchor_top = 0.55
@@ -28,12 +29,12 @@ text = "EXIT
 "
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(574, 323.5)
-scale = Vector2(0.6010417, 0.59537035)
+position = Vector2(960.0001, 541.5)
+scale = Vector2(1.0031251, 0.9990741)
 texture = ExtResource("1_l6cm7")
 
 [node name="Van" type="Sprite2D" parent="."]
-position = Vector2(305, 386)
+position = Vector2(628, 738)
 scale = Vector2(0.61042947, 0.52879584)
 texture = ExtResource("2_ekxnf")
 region_enabled = true

@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwxwlguihjpct"]
+
+[ext_resource type="Script" uid="uid://ba3xt3g24i28k" path="res://scripts/level-1.gd" id="1_oqle2"]
+[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="2_n35kj"]
+[ext_resource type="PackedScene" uid="uid://01cgenvjmwxd" path="res://scenes/finish_area.tscn" id="3_ga6hk"]
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="4_4nr4b"]
+[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="5_u35sx"]
+[ext_resource type="PackedScene" uid="uid://bf4evtb3vccen" path="res://scenes/vehicle.tscn" id="6_cehij"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0jp7s"]
+line_spacing = 10.0
+font = ExtResource("4_4nr4b")
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jp7s"]
+size = Vector2(106, 504)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_oqle2")
+
+[node name="YourParagraphText" type="Sprite2D" parent="."]
+position = Vector2(737.00006, 0)
+scale = Vector2(1.7677081, 1)
+texture = ExtResource("2_n35kj")
+
+[node name="FinishArea" parent="." instance=ExtResource("3_ga6hk")]
+position = Vector2(109, 296)
+collision_layer = 4
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SlotMachineButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.25
+theme_override_fonts/font = ExtResource("4_4nr4b")
+theme_override_font_sizes/font_size = 24
+text = "SPIN"
+
+[node name="EngineLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.76
+anchor_top = 0.05
+anchor_right = 0.97
+anchor_bottom = 0.14
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_u35sx")
+theme_override_font_sizes/font_size = 24
+text = "Engine : off"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelTank" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.04
+anchor_right = 0.25
+anchor_bottom = 0.04
+max_value = 2000.0
+
+[node name="FuelLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.09
+anchor_right = 0.25
+anchor_bottom = 0.09
+offset_bottom = 16.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_u35sx")
+theme_override_font_sizes/font_size = 16
+text = "Fuel ="
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Vehicle" parent="Objects" instance=ExtResource("6_cehij")]
+position = Vector2(-200, 250)
+collision_mask = 6
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="tut-label-1" type="Label" parent="Tutorial"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "press the spin button to get fuel !"
+label_settings = SubResource("LabelSettings_0jp7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tut-label-2" type="Label" parent="Tutorial"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "turn on the engine by E
+change lanes by W and S"
+label_settings = SubResource("LabelSettings_0jp7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tut-label-3" type="Label" parent="Tutorial"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "your goal is to reach finish line "
+label_settings = SubResource("LabelSettings_0jp7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tut-label-4" type="Label" parent="Tutorial"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+text = "more spins you do for fuel
+less score you get"
+label_settings = SubResource("LabelSettings_0jp7s")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tut area" type="Node2D" parent="."]
+
+[node name="tut" type="Area2D" parent="tut area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut"]
+position = Vector2(956, 300)
+shape = SubResource("RectangleShape2D_0jp7s")
+
+[node name="tut2" type="Area2D" parent="tut area"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut2"]
+position = Vector2(573, 290)
+shape = SubResource("RectangleShape2D_0jp7s")
+
+[connection signal="pressed" from="UI/SlotMachineButton" to="." method="_on_slot_machine_button_pressed"]
+[connection signal="body_entered" from="tut area/tut" to="." method="_on_tut_body_entered"]
+[connection signal="body_entered" from="tut area/tut2" to="." method="_on_tut_2_body_entered"]

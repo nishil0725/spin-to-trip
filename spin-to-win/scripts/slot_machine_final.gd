@@ -11,7 +11,7 @@ var fuel = 0
 @onready var reel_2: VBoxContainer = $SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel2
 @onready var reel_3: VBoxContainer = $SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel3
 
-@onready var score_label: Label = $SlotMachineWindow/SlotMachineContainer/Panel/ScoreLabel
+@onready var fuelspin_label: Label = $SlotMachineWindow/SlotMachineContainer/Panel/FuelSpinLabel
 @onready var spin_button: Button = $SlotMachineWindow/SlotMachineContainer/SpinButton
 
 #duration of spin
@@ -20,11 +20,14 @@ var time_left := 0.0
 
 func _ready() -> void:
 	update_symbols()
+	
+	
 
 #signal from button
 func _on_spin_button_pressed() -> void:
 	start_spin()
 	$SlotMachineWindow/Timer.start()
+	GameMaker.level_score -= 100
 	spin += 1
 	
 #starts the spin and adds the timer
@@ -68,27 +71,22 @@ func update_slot_sym(reel):
 			if label is Label:
 				var symbol_index = (reel_symbol_index + 1) % symbols.size()
 				label.text = str(symbols[symbol_index])
-				
-				
+
 func check_result():
 	var result1 = reel_1.get_child(1).text
 	var result2 = reel_2.get_child(1).text
 	var result3 = reel_3.get_child(1).text
 	
 	
-	fuel = 200 + (((int(result1) + int(result2) + int(result3)) * randi_range(60,100)) - (spin * randi_range(80,150)))
+	fuel = 20 + (((int(result1) + int(result2) + int(result3)) * randi_range(60,100)) - (spin * randi_range(80,150)))
 	
 	if fuel <= 0:
 		fuel = 50
 		
 	if result1 == result2 and result2 == result3:
-		score_label.text = str(100)
-		fuel = 2000
-	else:
-		score_label.text = str(0)
+		fuel = GameMaker.level_max_fuel
 
 	GameMaker.level_fuel = fuel
-
 
 func _on_timer_timeout() -> void:
 	queue_free()

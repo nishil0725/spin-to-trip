@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwp0g11a6t8cn"]
+
+[ext_resource type="Texture2D" uid="uid://bocn15m35he" path="res://sprites/Your_paragraph_text_1_-removebg-preview.png" id="1_mv8x7"]
+
+[node name="Road" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3302.65, 540)
+scale = Vector2(9.934985, 2.9)
+texture = ExtResource("1_mv8x7")

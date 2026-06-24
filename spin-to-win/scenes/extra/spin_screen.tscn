@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3456qpq51ude"]
+
+[ext_resource type="Shader" uid="uid://cck1kvtxamns5" path="res://shader/spin_screen.gdshader" id="1_urbcl"]
+[ext_resource type="Script" uid="uid://bgmmxy1y40l6n" path="res://scripts/spin_screen.gd" id="1_wyux1"]
+[ext_resource type="Texture2D" uid="uid://bx0505k6ptg0x" path="res://sprites/pixilart-drawing(1).png" id="2_vamv5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vamv5"]
+shader = ExtResource("1_urbcl")
+shader_parameter/Tex = ExtResource("2_vamv5")
+shader_parameter/n_rows = 5.0
+shader_parameter/y_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqqlc"]
+shader = ExtResource("1_urbcl")
+shader_parameter/Tex = ExtResource("2_vamv5")
+shader_parameter/n_rows = 5.0
+shader_parameter/y_offset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tswl0"]
+shader = ExtResource("1_urbcl")
+shader_parameter/Tex = ExtResource("2_vamv5")
+shader_parameter/n_rows = 5.0
+shader_parameter/y_offset = 0.0
+
+[node name="SpinScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wyux1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Slot1" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tex" type="ColorRect" parent="VBoxContainer/HBoxContainer/Slot1"]
+material = SubResource("ShaderMaterial_vamv5")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Slot2" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tex" type="ColorRect" parent="VBoxContainer/HBoxContainer/Slot2"]
+material = SubResource("ShaderMaterial_sqqlc")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Slot3" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tex" type="ColorRect" parent="VBoxContainer/HBoxContainer/Slot3"]
+material = SubResource("ShaderMaterial_tswl0")
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SpinButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Spin"
+
+[connection signal="pressed" from="VBoxContainer/SpinButton" to="." method="_on_spin_button_pressed"]
