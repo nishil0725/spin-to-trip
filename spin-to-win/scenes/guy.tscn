@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqn3wsxexqr1j"]
+
+[ext_resource type="Script" uid="uid://cgq7k8bjj3h7l" path="res://scripts/guy.gd" id="1_6b1ya"]
+[ext_resource type="Texture2D" uid="uid://d032iep5n0ftk" path="res://sprites/pixil-frame-0.png" id="1_lwmn2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6b1ya"]
+radius = 18.0
+height = 56.0
+
+[node name="guy" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6b1ya")
+
+[node name="PixilFrame0" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_lwmn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 7)
+shape = SubResource("CapsuleShape2D_6b1ya")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

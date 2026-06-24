@@ -2,14 +2,28 @@ extends CharacterBody2D
 
 var direction : Vector2 = Vector2.RIGHT
 var speed : int = 150
-var FUEL = GameMaker.level_fuel
+var distance : int
+var lane = 0
+
+@onready var engine_label: Label = $"../../UI/EngineLabel"
+@onready var fuel_label: Label = $"../../UI/FuelLabel"
+@onready var fuel_tank: ProgressBar = $"../../UI/FuelTank"
+
 const MIN_VEL = 0
+const START_POSITION : Vector2 = Vector2(-200,250)
 var engine = GameMaker.EngineStatus
+
+var travel_time:int
+
+func _ready() -> void:
+	fuel_tank.max_value = 2000
+	position = START_POSITION
 
 # E to turn on engine -> to check if Engine is on
 func EngineCheck():
 	if Input.is_action_just_pressed("EngineStart"):
 		engine = true
+		engine_label.text = "Engine : on"
 		
 func change_to_fuelspin():
 	get_tree().change_scene_to_file("res://scenes/slot_machine.tscn")
@@ -18,9 +32,16 @@ func _physics_process(delta: float) -> void:
 	EngineCheck()
 	
 	if engine:
-		FUEL -= delta * 100
+		@warning_ignore("narrowing_conversion")
+		
+		GameMaker.level_fuel -= delta * 100
 		move(delta)
-		print(FUEL)
+		calculate_distance(delta)
+		if GameMaker.level_fuel <= 0:
+			engine = false
+			engine_label.text = "Engine : off"
+			
+	update_fuel_ui()
 
 func brake(delta):
 	velocity -= direction * delta * 100
@@ -29,9 +50,35 @@ func brake(delta):
 		velocity.x = MIN_VEL
 
 func move(delta):
-	if FUEL > 0:
+	if GameMaker.level_fuel > 0:
 		velocity = speed * direction
 	else:
-		FUEL = 0
+		GameMaker.level_fuel = 0
 		brake(delta)
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("lane-up"):
+		if lane < 1:
+			position = position + Vector2(0,-150)
+			lane+=1
+			print("up")
+			
+	if Input.is_action_just_pressed("lane-down"):
+		if lane > -1:
+			position = position + Vector2(0,150)
+			lane -= 1
+			print("down")
+	
+func update_fuel_ui():
+	fuel_tank.value = GameMaker.level_fuel
+	fuel_label.text = "Fuel = " + str(GameMaker.level_fuel)
+
+func calculate_distance(delta):
+	var fuelfactor:int
+	distance = (speed * delta * 100 ) * fuelfactor
+	if GameMaker.level_fuel > 1000 and GameMaker.level_fuel <= 2000:
+		fuelfactor = 4
+	elif GameMaker.level_fuel > 350 and GameMaker.level_fuel <= 1000:
+		fuelfactor= 2
+	else :
+		fuelfactor = 1

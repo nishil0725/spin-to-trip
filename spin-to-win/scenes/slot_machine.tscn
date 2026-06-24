@@ -14,8 +14,8 @@ script = ExtResource("1_yohb1")
 [node name="SlotMachineWindow" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_right = 1915.0
+offset_bottom = 1073.0
 
 [node name="SlotMachineContainer" type="VBoxContainer" parent="SlotMachineWindow"]
 layout_mode = 1

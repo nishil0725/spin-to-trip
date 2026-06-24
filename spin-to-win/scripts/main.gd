@@ -1,10 +1,13 @@
 extends Node2D
 
+const FuelSpin = preload("res://scenes/slot_machine.tscn")
+
 func _on_slot_machine_button_pressed() -> void:
-	if GameMaker.level_fuel == 0:
-		call_deferred("change_to_slotmachine")
+	if GameMaker.level_fuel <= 0:
+		open_fuel_spin()
 	else:
 		print("you have fuel")
 
-func change_to_slotmachine():
-	get_tree().change_scene_to_file("res://scenes/slot_machine.tscn")
+func open_fuel_spin():
+	var fuel_spin_instance = FuelSpin.instantiate()
+	$UI.add_child(fuel_spin_instance)

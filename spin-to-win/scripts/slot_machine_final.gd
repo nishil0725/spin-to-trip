@@ -4,8 +4,7 @@ var symbols: Array = [1,2,3,4,5,6,7]
 var speed := 0.1
 var spinning := false
 var spin := 0
-var fuel = GameMaker.level_fuel 
-
+var fuel = 0
 
 #initializing slots
 @onready var reel_1: VBoxContainer = $SlotMachineWindow/SlotMachineContainer/SlotsContainer/SlotsMargin/Slots/Reel1
@@ -87,12 +86,9 @@ func check_result():
 		fuel = 2000
 	else:
 		score_label.text = str(0)
-	print(fuel)
+
 	GameMaker.level_fuel = fuel
-	
-func go_to_level():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
-	
+
+
 func _on_timer_timeout() -> void:
 	queue_free()
-	call_deferred("go_to_level")
