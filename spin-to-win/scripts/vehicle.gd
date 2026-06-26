@@ -8,16 +8,19 @@ var lane = 0
 @onready var engine_label: Label = $"../../UI/EngineLabel"
 @onready var fuel_label: Label = $"../../UI/FuelLabel"
 @onready var fuel_tank: ProgressBar = $"../../UI/FuelTank"
-@onready var score_label: Label = $"../../UI/ScoreLabel"
+
 const MIN_VEL = 0
 const START_POSITION : Vector2 = Vector2(-200,250)
 var engine = GameMaker.EngineStatus
 var travel_time:int
+const FuelAlert = preload("res://scenes/fuel_alert.tscn")
+var fuel_alert_shown := false
 
 func _ready() -> void:
 	fuel_tank.min_value = 0
 	fuel_tank.max_value = GameMaker.level_max_fuel
 	position = START_POSITION
+	GameMaker.level_fuel = 0
 
 # E to turn on engine -> to check if Engine is on
 func EngineCheck():
@@ -33,17 +36,16 @@ func _physics_process(delta: float) -> void:
 	
 	if engine:
 		@warning_ignore("narrowing_conversion")
-
-		GameMaker.level_fuel -= delta * 50
-		GameMaker.level_score += 2
-		score_label.text = "Score : " + str(GameMaker.level_score)
-
+		GameMaker.level_fuel -= delta  * 5
 		move(delta)
-
 		if GameMaker.level_fuel <= 0:
 			engine = false
 			engine_label.text = "Engine : off"
-			
+			if not fuel_alert_shown:
+				fuel_alert_shown = true
+				var alert_instance = FuelAlert.instantiate()
+				$"../../UI".add_child(alert_instance)
+
 	update_fuel_ui()
 
 func brake(delta):

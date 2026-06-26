@@ -1,0 +1,145 @@
+[gd_scene load_steps=9 format=3 uid="uid://dwxwlguihjpct"]
+
+[ext_resource type="Script" uid="uid://cgl2jejvrylbe" path="res://scripts/extra/level-2-fail.gd" id="1_oqle2"]
+[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="2_n35kj"]
+[ext_resource type="PackedScene" uid="uid://01cgenvjmwxd" path="res://scenes/finish_area.tscn" id="3_ga6hk"]
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="4_4nr4b"]
+[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="5_u35sx"]
+[ext_resource type="PackedScene" uid="uid://bf4evtb3vccen" path="res://scenes/vehicle.tscn" id="6_cehij"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eempa"]
+font = ExtResource("5_u35sx")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jp7s"]
+size = Vector2(106, 504)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_oqle2")
+
+[node name="YourParagraphText" type="Sprite2D" parent="."]
+position = Vector2(1384.0002, 0)
+scale = Vector2(2.4416666, 1)
+texture = ExtResource("2_n35kj")
+
+[node name="FinishArea" parent="." instance=ExtResource("3_ga6hk")]
+position = Vector2(3237, 288)
+collision_layer = 4
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SlotMachineButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_left = 0.85
+anchor_top = 0.15
+anchor_right = 0.95
+anchor_bottom = 0.25
+theme_override_fonts/font = ExtResource("4_4nr4b")
+theme_override_font_sizes/font_size = 24
+text = "SPIN"
+
+[node name="EngineLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.76
+anchor_top = 0.05
+anchor_right = 0.97
+anchor_bottom = 0.14
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("5_u35sx")
+theme_override_font_sizes/font_size = 24
+text = "Engine : off"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FuelTank" type="ProgressBar" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.04
+anchor_right = 0.25
+anchor_bottom = 0.04
+max_value = 2000.0
+
+[node name="FuelLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.09
+anchor_right = 0.25
+anchor_bottom = 0.09
+offset_bottom = 16.0
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_u35sx")
+theme_override_font_sizes/font_size = 16
+text = "Fuel ="
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -102.0
+offset_top = 25.0
+offset_right = 102.0
+offset_bottom = 32.0
+grow_horizontal = 2
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_eempa")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Vehicle" parent="Objects" instance=ExtResource("6_cehij")]
+position = Vector2(-200, 250)
+collision_mask = 6
+
+[node name="fuel-stations" type="Node2D" parent="."]
+
+[node name="fuel-1" type="Area2D" parent="fuel-stations"]
+position = Vector2(239, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fuel-stations/fuel-1"]
+position = Vector2(531, 300)
+shape = SubResource("RectangleShape2D_0jp7s")
+
+[node name="ColorRect" type="ColorRect" parent="fuel-stations/fuel-1"]
+offset_left = 507.0
+offset_top = 118.0
+offset_right = 547.0
+offset_bottom = 158.0
+
+[node name="fuel-2" type="Area2D" parent="fuel-stations"]
+position = Vector2(984, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fuel-stations/fuel-2"]
+position = Vector2(531, 300)
+shape = SubResource("RectangleShape2D_0jp7s")
+
+[node name="ColorRect" type="ColorRect" parent="fuel-stations/fuel-2"]
+offset_left = 507.0
+offset_top = 118.0
+offset_right = 547.0
+offset_bottom = 158.0
+
+[node name="fuel-3" type="Area2D" parent="fuel-stations"]
+position = Vector2(1771, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fuel-stations/fuel-3"]
+position = Vector2(531, 300)
+shape = SubResource("RectangleShape2D_0jp7s")
+
+[node name="ColorRect" type="ColorRect" parent="fuel-stations/fuel-3"]
+offset_left = 507.0
+offset_top = 118.0
+offset_right = 547.0
+offset_bottom = 158.0
+
+[connection signal="pressed" from="UI/SlotMachineButton" to="." method="_on_slot_machine_button_pressed"]
+[connection signal="body_entered" from="fuel-stations/fuel-1" to="." method="_on_fuel_1_body_entered"]
+[connection signal="body_entered" from="fuel-stations/fuel-2" to="." method="_on_fuel_1_body_entered"]
+[connection signal="body_entered" from="fuel-stations/fuel-3" to="." method="_on_fuel_1_body_entered"]

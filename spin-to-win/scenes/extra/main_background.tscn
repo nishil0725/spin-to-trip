@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d36hbblrc1tex"]
+
+[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="1_25qou"]
+
+[node name="MainBackground" type="ParallaxBackground"]
+scroll_limit_end = Vector2(5000, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.1, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_25qou")

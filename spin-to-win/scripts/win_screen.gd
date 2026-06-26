@@ -1,8 +1,4 @@
 extends Control
-@onready var score_label: Label = $ScoreLabel
-
-func _ready() -> void:
-	score_label.text = "Score : " + str(GameMaker.level_score + 2)
 
 func _enter_tree() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS

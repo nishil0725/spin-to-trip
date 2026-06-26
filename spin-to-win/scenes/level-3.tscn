@@ -1,34 +1,39 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvkah8y7f20xc"]
+[gd_scene load_steps=9 format=3 uid="uid://df3slf61axp3u"]
 
-[ext_resource type="Script" uid="uid://ba3xt3g24i28k" path="res://scripts/level-1.gd" id="1_awf0l"]
-[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="2_5n3nx"]
-[ext_resource type="PackedScene" uid="uid://01cgenvjmwxd" path="res://scenes/finish_area.tscn" id="3_8q2mf"]
-[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="4_khdjt"]
-[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="5_6lob6"]
-[ext_resource type="PackedScene" uid="uid://bf4evtb3vccen" path="res://scenes/vehicle.tscn" id="6_nyndc"]
+[ext_resource type="Script" uid="uid://8uywoxtsmhg7" path="res://scripts/level-3.gd" id="1_5n3nx"]
+[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="2_8q2mf"]
+[ext_resource type="PackedScene" uid="uid://01cgenvjmwxd" path="res://scenes/finish_area.tscn" id="3_khdjt"]
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="4_6lob6"]
+[ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="5_nyndc"]
+[ext_resource type="PackedScene" uid="uid://bf4evtb3vccen" path="res://scenes/vehicle.tscn" id="6_1ec8c"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_0jp7s"]
-line_spacing = 10.0
-font = ExtResource("4_khdjt")
+[sub_resource type="LabelSettings" id="LabelSettings_awf0l"]
+font = ExtResource("4_6lob6")
 font_size = 24
 font_color = Color(1, 0, 0, 1)
 shadow_size = 8
 shadow_color = Color(0, 0, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jp7s"]
-size = Vector2(106, 504)
+[sub_resource type="LabelSettings" id="LabelSettings_5n3nx"]
+font = ExtResource("4_6lob6")
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_awf0l")
+script = ExtResource("1_5n3nx")
 
 [node name="YourParagraphText" type="Sprite2D" parent="."]
-position = Vector2(737.00006, 0)
-scale = Vector2(1.7677081, 1)
-texture = ExtResource("2_5n3nx")
+position = Vector2(1008.0001, 0)
+scale = Vector2(2.0499997, 1)
+texture = ExtResource("2_8q2mf")
+metadata/_edit_lock_ = true
 
-[node name="FinishArea" parent="." instance=ExtResource("3_8q2mf")]
-position = Vector2(109, 296)
+[node name="FinishArea" parent="." instance=ExtResource("3_khdjt")]
+position = Vector2(2922, 307)
 collision_layer = 4
+collision_mask = 2
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -39,7 +44,7 @@ anchor_left = 0.85
 anchor_top = 0.15
 anchor_right = 0.95
 anchor_bottom = 0.25
-theme_override_fonts/font = ExtResource("4_khdjt")
+theme_override_fonts/font = ExtResource("4_6lob6")
 theme_override_font_sizes/font_size = 24
 text = "SPIN"
 
@@ -51,7 +56,7 @@ anchor_top = 0.05
 anchor_right = 0.97
 anchor_bottom = 0.14
 theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("5_6lob6")
+theme_override_fonts/font = ExtResource("5_nyndc")
 theme_override_font_sizes/font_size = 24
 text = "Engine : off"
 horizontal_alignment = 1
@@ -75,82 +80,63 @@ anchor_right = 0.25
 anchor_bottom = 0.09
 offset_bottom = 16.0
 theme_override_constants/outline_size = 6
-theme_override_fonts/font = ExtResource("5_6lob6")
+theme_override_fonts/font = ExtResource("5_nyndc")
 theme_override_font_sizes/font_size = 16
 text = "Fuel ="
 
+[node name="FuelCheck" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -12.0
+offset_right = 144.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "YOU HAVE FUEL"
+label_settings = SubResource("LabelSettings_awf0l")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -11.5
+offset_right = 159.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Doge the guys"
+label_settings = SubResource("LabelSettings_5n3nx")
+
 [node name="Objects" type="Node2D" parent="."]
 
-[node name="Vehicle" parent="Objects" instance=ExtResource("6_nyndc")]
+[node name="Vehicle" parent="Objects" instance=ExtResource("6_1ec8c")]
 position = Vector2(-200, 250)
 collision_mask = 6
 
-[node name="Tutorial" type="CanvasLayer" parent="."]
+[node name="GuysPosition" type="Node2D" parent="Objects"]
 
-[node name="tut-label-1" type="Label" parent="Tutorial"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-text = "press the spin button to get fuel !"
-label_settings = SubResource("LabelSettings_0jp7s")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Marker2D" type="Marker2D" parent="Objects/GuysPosition"]
+position = Vector2(2784, 295)
 
-[node name="tut-label-2" type="Label" parent="Tutorial"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-text = "turn on the engine by E
-change lanes by W and S"
-label_settings = SubResource("LabelSettings_0jp7s")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Marker2D2" type="Marker2D" parent="Objects/GuysPosition"]
+position = Vector2(2777, 164)
 
-[node name="tut-label-3" type="Label" parent="Tutorial"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-text = "your goal is to reach finish line "
-label_settings = SubResource("LabelSettings_0jp7s")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Marker2D3" type="Marker2D" parent="Objects/GuysPosition"]
+position = Vector2(2789, 451)
 
-[node name="tut-label-4" type="Label" parent="Tutorial"]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-text = "more spins you do for fuel
-less score you get"
-label_settings = SubResource("LabelSettings_0jp7s")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="tut area" type="Node2D" parent="."]
-
-[node name="tut" type="Area2D" parent="tut area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut"]
-position = Vector2(956, 300)
-shape = SubResource("RectangleShape2D_0jp7s")
-
-[node name="tut2" type="Area2D" parent="tut area"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut2"]
-position = Vector2(573, 290)
-shape = SubResource("RectangleShape2D_0jp7s")
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="pressed" from="UI/SlotMachineButton" to="." method="_on_slot_machine_button_pressed"]
-[connection signal="body_entered" from="tut area/tut" to="." method="_on_tut_body_entered"]
-[connection signal="body_entered" from="tut area/tut2" to="." method="_on_tut_2_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

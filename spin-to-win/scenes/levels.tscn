@@ -204,6 +204,18 @@ label_settings = SubResource("LabelSettings_jj4e6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackButton" type="Button" parent="UI"]
+custom_minimum_size = Vector2(100, 50)
+anchors_preset = -1
+anchor_left = 0.03
+anchor_top = 0.03
+anchor_right = 0.03
+anchor_bottom = 0.03
+theme_override_fonts/font = ExtResource("4_jj4e6")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
 [connection signal="pressed" from="UI/ButtonContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="UI/BackButton" to="." method="_on_back_button_pressed"]

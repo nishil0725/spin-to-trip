@@ -21,7 +21,8 @@ var time_left := 0.0
 func _ready() -> void:
 	update_symbols()
 	
-	
+func _enter_tree() -> void:
+	process_mode  = Node.PROCESS_MODE_ALWAYS
 
 #signal from button
 func _on_spin_button_pressed() -> void:
@@ -77,14 +78,14 @@ func check_result():
 	var result2 = reel_2.get_child(1).text
 	var result3 = reel_3.get_child(1).text
 	
-	
-	fuel = 20 + (((int(result1) + int(result2) + int(result3)) * randi_range(60,100)) - (spin * randi_range(80,150)))
-	
+	fuel = ((20 + (((int(result1) + int(result2) + int(result3)) * randi_range(60,100)) - (spin * randi_range(80,150))))/2)
+
 	if fuel <= 0:
 		fuel = 50
 		
 	if result1 == result2 and result2 == result3:
 		fuel = GameMaker.level_max_fuel
+		GameMaker.level_score += 300
 
 	GameMaker.level_fuel = fuel
 
