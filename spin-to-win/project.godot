@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameMaker="*res://scripts/game_maker.gd"
 LevelCore="*res://scripts/LevelCore.gd"
+Sfx="*res://scenes/sfx.tscn"
 
 [display]
 

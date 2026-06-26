@@ -8,10 +8,11 @@
 [ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="3_o6xl0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eempa"]
-font = ExtResource("3_o6xl0")
-font_size = 32
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
+font = ExtResource("2_tefeu")
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0jp7s"]
 line_spacing = 10.0
@@ -31,10 +32,6 @@ script = ExtResource("1_sugp2")
 position = Vector2(737.00006, 0)
 scale = Vector2(1.7677081, 1)
 texture = ExtResource("2_tipki")
-
-[node name="FinishArea" parent="." instance=ExtResource("2_o6xl0")]
-position = Vector2(1420, 268)
-collision_layer = 4
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -85,16 +82,20 @@ theme_override_fonts/font = ExtResource("3_o6xl0")
 theme_override_font_sizes/font_size = 16
 text = "Fuel ="
 
-[node name="ScoreLabel" type="Label" parent="UI"]
-anchors_preset = 5
+[node name="FuelCheck" type="Label" parent="UI"]
+visible = false
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -102.0
-offset_top = 25.0
-offset_right = 102.0
-offset_bottom = 32.0
+anchor_bottom = 0.5
+offset_left = -144.0
+offset_top = -12.0
+offset_right = 144.0
+offset_bottom = 12.0
 grow_horizontal = 2
-text = "Score: 0"
+grow_vertical = 2
+text = "YOU HAVE FUEL"
 label_settings = SubResource("LabelSettings_eempa")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -162,14 +163,19 @@ vertical_alignment = 1
 [node name="tut" type="Area2D" parent="tut area"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut"]
-position = Vector2(647, 300)
+position = Vector2(1143, 292)
 shape = SubResource("RectangleShape2D_0jp7s")
 
 [node name="tut2" type="Area2D" parent="tut area"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="tut area/tut2"]
-position = Vector2(202, 303)
+position = Vector2(460, 299)
 shape = SubResource("RectangleShape2D_0jp7s")
+
+[node name="FinishArea" parent="." instance=ExtResource("2_o6xl0")]
+position = Vector2(1943, 275)
+collision_layer = 4
+collision_mask = 2
 
 [connection signal="pressed" from="UI/SlotMachineButton" to="." method="_on_slot_machine_button_pressed"]
 [connection signal="body_entered" from="tut area/tut" to="." method="_on_tut_body_entered"]

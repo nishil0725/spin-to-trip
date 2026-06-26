@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://n633hpt03yqa"]
+
+[ext_resource type="Script" uid="uid://7uxec14xfq8b" path="res://scenes/sfx.gd" id="1_4u0im"]
+
+[node name="sfx" type="Node"]
+script = ExtResource("1_4u0im")

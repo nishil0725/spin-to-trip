@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cusg1j54nh7hk"]
+
+[ext_resource type="Texture2D" uid="uid://bnf6yp4774b6o" path="res://sprites/traffic-cone.png" id="1_1pvhk"]
+[ext_resource type="PackedScene" uid="uid://co3qrw5nhp66a" path="res://scenes/kill_zone.tscn" id="2_666jn"]
+
+[node name="Cone" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8.000006, -25)
+scale = Vector2(3.1562502, 2.8125)
+texture = ExtResource("1_1pvhk")
+
+[node name="Kill-zone2" parent="." instance=ExtResource("2_666jn")]

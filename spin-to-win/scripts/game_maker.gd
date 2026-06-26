@@ -1,8 +1,8 @@
 extends Node
 
-var level_fuel : int = 0
+var level_fuel : float = 0
 var EngineStatus : bool = false
-var level_max_fuel : int = 2000
+var level_max_fuel : int = 1000
 var levels = 3
 
 var current_level_number = 1

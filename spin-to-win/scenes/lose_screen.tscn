@@ -1,31 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8ut5hmw0kh5n"]
+[gd_scene load_steps=4 format=3 uid="uid://bhy65mgsana11"]
 
-[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="1_l2arl"]
-[ext_resource type="Script" uid="uid://c1jb1fml1r07" path="res://scripts/win_screen.gd" id="1_wmwda"]
+[ext_resource type="Script" uid="uid://byhamwbd2wh3j" path="res://scripts/lose_screen.gd" id="1_73mov"]
+[ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="2_lytqm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wmwda"]
-font = ExtResource("1_l2arl")
+font = ExtResource("2_lytqm")
 font_size = 48
-font_color = Color(0, 0, 0, 1)
+font_color = Color(0.92963415, 0.92963415, 0.92963415, 1)
 
-[node name="Win_Screen" type="Control"]
+[node name="Lose_Screen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wmwda")
+script = ExtResource("1_73mov")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.33
-anchor_top = 0.25
-anchor_right = 0.67
-anchor_bottom = 0.75
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.174626, 0.17462596, 0.17462596, 1)
 
-[node name="WinLabel" type="Label" parent="."]
+[node name="LoseLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -34,12 +35,12 @@ anchor_right = 0.5
 anchor_bottom = 0.38
 grow_horizontal = 2
 grow_vertical = 2
-text = "YOU WIN"
+text = "YOU LOSE"
 label_settings = SubResource("LabelSettings_wmwda")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextLevelButton" type="Button" parent="."]
+[node name="ReplayLevelButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -52,9 +53,9 @@ offset_right = 156.0
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_fonts/font = ExtResource("2_lytqm")
 theme_override_font_sizes/font_size = 32
-text = "Next Level"
+text = "Replay"
 
 [node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 1
@@ -69,9 +70,9 @@ offset_right = 156.0
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_l2arl")
+theme_override_fonts/font = ExtResource("2_lytqm")
 theme_override_font_sizes/font_size = 32
 text = "Main Menu"
 
-[connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="ReplayLevelButton" to="." method="_on_replay_level_button_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
