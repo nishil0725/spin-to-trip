@@ -10,7 +10,7 @@ var lane = 0
 @onready var fuel_tank: ProgressBar = $"../../UI/FuelTank"
 
 const MIN_VEL = 0
-const START_POSITION : Vector2 = Vector2(-200,250)
+const START_POSITION : Vector2 = Vector2(-600,550)
 var engine = GameMaker.EngineStatus
 var travel_time:int
 const FuelAlert = preload("res://scenes/fuel_alert.tscn")
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	
 	if engine:
 		@warning_ignore("narrowing_conversion")
-		GameMaker.level_fuel -= delta  * 5
+		GameMaker.level_fuel -= delta  * 50
 		move(delta)
 		if GameMaker.level_fuel <= 0:
 			engine = false
@@ -45,6 +45,8 @@ func _physics_process(delta: float) -> void:
 				fuel_alert_shown = true
 				var alert_instance = FuelAlert.instantiate()
 				$"../../UI".add_child(alert_instance)
+		else:
+			fuel_alert_shown = false
 
 	update_fuel_ui()
 

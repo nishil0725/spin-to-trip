@@ -13,8 +13,9 @@ shape = SubResource("RectangleShape2D_qvag1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -112.0
-offset_top = -319.0
+offset_top = -510.0
 offset_right = 117.0
-offset_bottom = 318.0
+offset_bottom = 561.0
+color = Color(0.78039217, 0.3137255, 0.41960785, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

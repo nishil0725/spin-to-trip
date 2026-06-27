@@ -32,6 +32,7 @@ anchor_right = 0.67
 anchor_bottom = 0.55
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.78039217, 0.3137255, 0.41960785, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

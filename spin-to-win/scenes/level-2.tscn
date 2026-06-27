@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://fv6cj8ej4ika"]
+[gd_scene load_steps=12 format=3 uid="uid://fv6cj8ej4ika"]
 
 [ext_resource type="Script" uid="uid://cevik7n5i57ws" path="res://scripts/level-2.gd" id="1_oqle2"]
-[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="2_n35kj"]
+[ext_resource type="Texture2D" uid="uid://x1o0hn3y1h4v" path="res://sprites/pixil-layer-0.png" id="3_4nr4b"]
 [ext_resource type="PackedScene" uid="uid://01cgenvjmwxd" path="res://scenes/finish_area.tscn" id="3_ga6hk"]
 [ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="4_4nr4b"]
+[ext_resource type="Texture2D" uid="uid://dgjbtujq44n3x" path="res://sprites/pixil-layer-1.png" id="4_u35sx"]
+[ext_resource type="Texture2D" uid="uid://bjspwwguqa1i2" path="res://sprites/pixil-layer-2.png" id="5_cehij"]
 [ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="5_u35sx"]
 [ext_resource type="PackedScene" uid="uid://bf4evtb3vccen" path="res://scenes/vehicle.tscn" id="6_cehij"]
 [ext_resource type="PackedScene" uid="uid://cusg1j54nh7hk" path="res://scenes/cone.tscn" id="7_n35kj"]
@@ -25,14 +27,43 @@ shadow_color = Color(0, 0, 0, 1)
 [node name="Main" type="Node2D"]
 script = ExtResource("1_oqle2")
 
-[node name="YourParagraphText" type="Sprite2D" parent="."]
-position = Vector2(1324.5002, 0)
-scale = Vector2(2.3796873, 1)
-texture = ExtResource("2_n35kj")
+[node name="ParallaxBackground" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer/Parallax2D"]
+scale = Vector2(30, 30)
+texture = ExtResource("3_4nr4b")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer2"]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2/Parallax2D"]
+scale = Vector2(30, 30)
+texture = ExtResource("4_u35sx")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground/ParallaxLayer3"]
+repeat_size = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3/Parallax2D"]
+scale = Vector2(30, 30)
+texture = ExtResource("5_cehij")
 metadata/_edit_lock_ = true
 
 [node name="FinishArea" parent="." instance=ExtResource("3_ga6hk")]
-position = Vector2(3288, 279)
+position = Vector2(2757, 712)
 collision_layer = 4
 collision_mask = 2
 
@@ -121,49 +152,40 @@ vertical_alignment = 1
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Vehicle" parent="Objects" instance=ExtResource("6_cehij")]
-position = Vector2(-200, 250)
+position = Vector2(-600, 550)
 collision_mask = 6
 
 [node name="Cone" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(174, 306)
+position = Vector2(130, 590)
 
 [node name="Cone2" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(479, 177)
+position = Vector2(482, 373)
 
 [node name="Cone3" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(822, 182)
+position = Vector2(851, 380)
 
 [node name="Cone4" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(697, 311)
+position = Vector2(690, 583)
 
 [node name="Cone5" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(1146, 481)
+position = Vector2(1294, 822)
 
 [node name="Cone6" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(1253, 334)
+position = Vector2(1360, 382)
 
 [node name="Cone7" parent="Objects" instance=ExtResource("7_n35kj")]
 position = Vector2(1549, 170)
 
 [node name="Cone8" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(1630, 480)
+position = Vector2(1739, 827)
 
 [node name="Cone9" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2013, 323)
+position = Vector2(1956, 568)
 
 [node name="Cone10" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2334, 461)
+position = Vector2(2475, 823)
 
 [node name="Cone11" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2325, 326)
-
-[node name="Cone12" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2678, 175)
-
-[node name="Cone13" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2719, 478)
-
-[node name="Cone14" parent="Objects" instance=ExtResource("7_n35kj")]
-position = Vector2(2966, 331)
+position = Vector2(2463, 558)
 
 [connection signal="pressed" from="UI/SlotMachineButton" to="." method="_on_slot_machine_button_pressed"]
