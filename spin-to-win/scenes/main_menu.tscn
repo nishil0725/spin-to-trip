@@ -1,11 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://cs0k1wreqgms2"]
 
 [ext_resource type="Script" uid="uid://dkjfw2kbh81x7" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://di064y31o71j" path="res://sprites/Your paragraph text.png" id="1_l6cm7"]
-[ext_resource type="Texture2D" uid="uid://cjbdojcw5fl4l" path="res://sprites/van.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://fqdrrw08i3gc" path="res://sprites/bg.png" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://xq2o0p46a8oq" path="res://sprites/van (2).png" id="3_wu84c"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_bqqt6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(956.00006, 475.00003)
+scale = Vector2(30, 30)
+texture = ExtResource("2_bqqt6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -15,6 +20,10 @@ anchor_left = 0.6
 anchor_top = 0.4
 anchor_right = 0.75
 anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = 273.0
+offset_right = -108.0
+offset_bottom = 273.0
 text = "START
 "
 
@@ -25,20 +34,17 @@ anchor_left = 0.6
 anchor_top = 0.55
 anchor_right = 0.75
 anchor_bottom = 0.65
+offset_left = 283.0
+offset_top = 114.0
+offset_right = 283.0
+offset_bottom = 114.0
 text = "EXIT
 "
 
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960.0001, 541.5)
-scale = Vector2(1.0031251, 0.9990741)
-texture = ExtResource("1_l6cm7")
-
 [node name="Van" type="Sprite2D" parent="."]
-position = Vector2(628, 738)
-scale = Vector2(0.61042947, 0.52879584)
-texture = ExtResource("2_ekxnf")
-region_enabled = true
-region_rect = Rect2(628.087, 397.69223, 489.81012, 382.6307)
+position = Vector2(584, 797)
+scale = Vector2(10, 10)
+texture = ExtResource("3_wu84c")
 
 [connection signal="pressed" from="UI/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="UI/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://pbhmj6us01pm"]
+[gd_scene load_steps=7 format=3 uid="uid://pbhmj6us01pm"]
 
 [ext_resource type="Script" uid="uid://xwo0mbaxrxeq" path="res://scripts/levels.gd" id="1_5ekxl"]
 [ext_resource type="FontFile" uid="uid://dgoc2cnjq7h4v" path="res://fonts/PixelOperator8-Bold.ttf" id="2_hk6qi"]
-[ext_resource type="Texture2D" uid="uid://bs4xv1kcyxfyv" path="res://sprites/sky.png" id="2_ly2og"]
-[ext_resource type="Texture2D" uid="uid://bwupgpjcwf3ag" path="res://sprites/Your_paragraph_text_3_-removebg-preview.png" id="3_jj4e6"]
 [ext_resource type="FontFile" uid="uid://cbmnsm2d2oaeh" path="res://fonts/PixelOperator8.ttf" id="4_jj4e6"]
+[ext_resource type="Texture2D" uid="uid://fqdrrw08i3gc" path="res://sprites/bg.png" id="4_ly2og"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5ekxl"]
 font = ExtResource("2_hk6qi")
@@ -22,16 +21,6 @@ shadow_color = Color(0, 0, 0, 1)
 
 [node name="Levels" type="Node2D"]
 script = ExtResource("1_5ekxl")
-
-[node name="Background" type="Sprite2D" parent="."]
-position = Vector2(959.00006, 542.5)
-scale = Vector2(1.0020834, 1.0009259)
-texture = ExtResource("2_ly2og")
-
-[node name="Background2" type="Sprite2D" parent="."]
-position = Vector2(961, 909.49994)
-scale = Vector2(2.885886, 3.0213337)
-texture = ExtResource("3_jj4e6")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -214,6 +203,11 @@ anchor_bottom = 0.03
 theme_override_fonts/font = ExtResource("4_jj4e6")
 theme_override_font_sizes/font_size = 24
 text = "Back"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(957.00006, 201.00003)
+scale = Vector2(30, 30)
+texture = ExtResource("4_ly2og")
 
 [connection signal="pressed" from="UI/ButtonContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/Button2" to="." method="_on_button_2_pressed"]

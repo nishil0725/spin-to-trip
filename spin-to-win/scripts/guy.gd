@@ -6,7 +6,7 @@ var speed = randi_range(80,100)
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	call_deferred("lose")
 	
 func lose():
